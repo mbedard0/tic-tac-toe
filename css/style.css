@@ -24,7 +24,7 @@ div {
   vertical-align: middle;
 }
 
-#startMessage {
+#msg {
   text-align: center;
 }
 
@@ -35,13 +35,13 @@ h1 {
 .btn {
   justify-content: center;
   text-align: center;
-  margin: 0px 0px 10px 0px;
+  margin: 10px 0px 10px 0px;
 }
 
-#resetBtn {
+/* #resetBtn {
   justify-content: center;
   text-align: center;
   margin: 20px 0px 10px 0px;
   width: 80px;
   display: flex;
-}
+} */
