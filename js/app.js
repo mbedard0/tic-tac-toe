@@ -1,11 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 
 // /*---------------------------- Variables (state) ----------------------------*/
-const boardArr = [
-  ['sq0', 'sq1', 'sq2'],
-  ['sq3', 'sq4', 'sq5'],
-  ['sq6', 'sq7', 'sq8']
-]
 
 let playerTurn, gameOver
 
@@ -13,67 +8,64 @@ let playerTurn, gameOver
 
 // let gameStatus
 
-const sq0 = document.querySelector('#sq0');
-const sq1 = document.querySelector('#sq1');
-const sq2 = document.querySelector('#sq2');
-const sq3 = document.querySelector('#sq3');
-const sq4 = document.querySelector('#sq4');
-const sq5 = document.querySelector('#sq5');
-const sq6 = document.querySelector('#sq6');
-const sq7 = document.querySelector('#sq7');
-const sq8 = document.querySelector('#sq8');
 
-const board = document.querySelector('.board');
-console.log(board)
+let squares = document.querySelectorAll('.square');
+let boardElement = document.getElementById('board')
+// let newBoard = Array.prototype.slice.call(board)
+// console.log(board[3])
 
 let msgEl = document.querySelector('#msg')
 
-
 // const xBtn = document.getElementById('xBtn')
 // const oBtn = document.getElementById('oBtn')
-// const msgEl = document.getElementById('#msg')
-const resetBtn = document.getElementById('resetBtn')
+let resetBtn = document.getElementById('resetBtn')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 // xBtn.addEventListener('click', hide)
 // oBtn.addEventListener('click', hide)
 
-// resetBtn.addEventListener('reset', init)
-
-// sq0.addEventListener('click', handleClick(evt))
+resetBtn.addEventListener('click', init)
+boardElement.addEventListener('click', handleClick)
 
 /*-------------------------------- Functions --------------------------------*/
-
 init()
 
 function init() {
   msgEl.innerText = 'Start the game by picking a square.';
   playerTurn = 1;
+  board = [
+    null, null, null,
+    null, null, null,
+    null, null, null
+  ]
 }
 
-  // console.log(boardArr)
+
+// console.log(boardArr)
   //sets all squares to zero
   // playerTurn = 1
   //sets playerOne turn -> playerTurn = 1
   //sets gameOver to null -> let gameOver = null
 // }
 
-// sq0.onclick = function() {
-//   sq0.innerText = 'X';
-// }
-
-sq1.onclick = function() {
-  sq1.innerText = 'O';
-}
-
 // gameOver = when 8 indexes do not have win condition met, or tie is declared
 
 // while gameOver !== true, run handleClick()
 
-// function handleClick(evt) {
-//   if ()
-//     const clicked = sq0.innerText = 'X';
+function handleClick(evt) {
+  let clicked = evt.target
+  return clicked
+}
+
+function render() {
+  if (playerTurn === 1) {
+    squares[''].innerText = 'X';
+    } else if (playerTurn === -1) {
+    squares[''].innerText = 'O'
+  }
+  playerTurn = playerTurn * -1
+}
 //   })
 //   if (playerTurn === 1) {
 //     sqNum[idx].innerText = 'X'
