@@ -3,6 +3,8 @@
 // let win1 
 // // wins = 3 sqs in a row abs(sum) = 3
 
+// const startMessage = document.getElementById('#startMessage')
+
 // /*---------------------------- Variables (state) ----------------------------*/
 
 // let playerTurn, gameOver
@@ -17,12 +19,15 @@
 //   '#sq6', '#sq7', '#sq8'
 // ]
 
-
-// /*----------------------------- Event Listeners -----------------------------*/
-
 // const xBtn = document.getElementById('xBtn')
 // const oBtn = document.getElementById('oBtn')
 // const resetBtn = document.getElementById('resetBtn')
+
+
+/*----------------------------- Event Listeners -----------------------------*/
+
+xBtn.addEventListener('click', hide)
+oBtn.addEventListener('click', hide)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -30,13 +35,14 @@
 
 // function render() {}
 
-// if isWinner === true {
-  // return `Congrats! ${player} is the winner!`
-// } else {
-  //
-// }
-
 
 // function handleClick(){}
 
-// function init() {}
+// function init() {
+
+// }
+
+function hide() {
+  document.getElementById('xBtn').hidden = true;
+  document.getElementById('oBtn').hidden = true;
+}
