@@ -21,7 +21,6 @@ let resetBtn = document.getElementById('resetBtn')
 
 // xBtn.addEventListener('click', hide)
 // oBtn.addEventListener('click', hide)
-
 resetBtn.addEventListener('click', init)
 boardElement.addEventListener('click', handleClick)
 
@@ -39,27 +38,38 @@ function init() {
   render()
 }
 
-
 // gameOver = when 8 indexes do not have win condition met, or tie is declared
 
 // while gameOver !== true, run handleClick()
 
 function handleClick(evt) {
+  let idx = parseInt(evt.target.id);
+  if (board[idx] === 1 || board[idx] === -1) {
+    msgEl.innerText = `That square's already been picked!`
+  } else {
   board[parseInt(evt.target.id)] = playerTurn;
   playerTurn = playerTurn * -1;
   render()
+  }
 }
 
 function render() {
   squares.forEach((square, idx) => {
     if(board[idx] === 1) {
-      square.innerText = 'X'
+      square.innerText = 'X';
     } else if(board[idx] === -1) {
-      square.innerText = 'O'
+      square.innerText = 'O';
+    // } else if () {
+    //   return
     } else {
       square.innerText = ''
     }
   })
+  if (playerTurn === 1) {
+    msgEl.innerText = `It's X's turn now.`
+  } else if (playerTurn === -1) {
+    msgEl.innerText = `It's O's turn`
+  }
   gameOver()
 }
 
