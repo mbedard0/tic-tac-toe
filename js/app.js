@@ -2,7 +2,7 @@
 
 // /*---------------------------- Variables (state) ----------------------------*/
 
-let playerTurn, gameOver
+let playerTurn = 1
 
 // /*------------------------ Cached Element References ------------------------*/
 
@@ -11,9 +11,6 @@ let playerTurn, gameOver
 
 let squares = document.querySelectorAll('.square');
 let boardElement = document.getElementById('board')
-// let newBoard = Array.prototype.slice.call(board)
-// console.log(board[3])
-
 let msgEl = document.querySelector('#msg')
 
 // const xBtn = document.getElementById('xBtn')
@@ -38,43 +35,39 @@ function init() {
     null, null, null,
     null, null, null,
     null, null, null
-  ]
+  ];
+  render()
 }
 
-
-// console.log(boardArr)
-  //sets all squares to zero
-  // playerTurn = 1
-  //sets playerOne turn -> playerTurn = 1
-  //sets gameOver to null -> let gameOver = null
-// }
 
 // gameOver = when 8 indexes do not have win condition met, or tie is declared
 
 // while gameOver !== true, run handleClick()
 
 function handleClick(evt) {
-  let clicked = evt.target
-  return clicked
+  board[parseInt(evt.target.id)] = playerTurn;
+  playerTurn = playerTurn * -1;
+  render()
 }
 
 function render() {
-  if (playerTurn === 1) {
-    squares[''].innerText = 'X';
-    } else if (playerTurn === -1) {
-    squares[''].innerText = 'O'
-  }
-  playerTurn = playerTurn * -1
+  squares.forEach((square, idx) => {
+    if(board[idx] === 1) {
+      square.innerText = 'X'
+    } else if(board[idx] === -1) {
+      square.innerText = 'O'
+    } else {
+      square.innerText = ''
+    }
+  })
+  gameOver()
 }
-//   })
-//   if (playerTurn === 1) {
-//     sqNum[idx].innerText = 'X'
-//   }
-//   if (playerTurn === -1) {
-//     sqNum[idx].innerText = 'O'
-//   }
-// return playerTurn = playerTurn * -1
-// }
+
+function gameOver() {
+  console.log(gameOver)
+}
+
+
 
 // let oWins = function oWins() {
 //   if (sum1 === -3, sum2 === -3, sum4 === -4, etc.) {
