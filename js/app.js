@@ -13,15 +13,10 @@ let squares = document.querySelectorAll('.square');
 let boardElement = document.getElementById('board')
 let msgEl = document.querySelector('#msg')
 let startMsg = document.querySelector('#startMsg')
-
-// const xBtn = document.getElementById('xBtn')
-// const oBtn = document.getElementById('oBtn')
 let resetBtn = document.getElementById('resetBtn')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-// xBtn.addEventListener('click', hide)
-// oBtn.addEventListener('click', hide)
 resetBtn.addEventListener('click', init)
 boardElement.addEventListener('click', handleClick)
 
@@ -35,6 +30,7 @@ function init() {
     null, null, null,
     null, null, null
   ];
+  startMsg.innerText = `Start the game by picking a square.`
   render()
 }
 
@@ -60,8 +56,6 @@ function render() {
       square.innerText = 'X';
     } else if(board[idx] === -1) {
       square.innerText = 'O';
-    // } else if () {
-    //   return
     } else {
       square.innerText = ''
     }
@@ -75,49 +69,35 @@ function render() {
 }
 
 function gameOver() {
-  console.log(gameOver)
+  if ((board[0] + board[1] + board[2] === 3) || 
+  (board[3] + board[4] + board[5] === 3) ||
+  (board[6] + board[7] + board[8] === 3) ||
+  (board[0] + board[3] + board[6] === 3) ||
+  (board[1] + board[4] + board[7] === 3) ||
+  (board[2] + board[5] + board[8] === 3) ||
+  (board[0] + board[4] + board[8] === 3) ||
+  (board[2] + board[4] + board[6] === 3)) {
+    startMsg.innerText = 'X is the winner!';
+    msgEl.innerText = 'Would you like to play again?'
+  } else if ((board[0] + board[1] + board[2] === -3) || 
+  (board[3] + board[4] + board[5] === -3) ||
+  (board[6] + board[7] + board[8] === -3) ||
+  (board[0] + board[3] + board[6] === -3) ||
+  (board[1] + board[4] + board[7] === -3) ||
+  (board[2] + board[5] + board[8] === -3) ||
+  (board[0] + board[4] + board[8] === -3) ||
+  (board[2] + board[4] + board[6] === -3)) {
+    startMsg.innerText = 'O is the winner!'
+    msgEl.innerText = 'Would you like to play again?'
+  // } else if (board.every(function(sq) {
+  //   sq = true})) {
+  //     startMsg.innerText = `There's a tie! Reset the board to start over.`;
+  //     msgEl.innerText = ``
+    }
 }
 
-
-
-// let oWins = function oWins() {
-//   if (sum1 === -3, sum2 === -3, sum4 === -4, etc.) {
-//     return true
-//   }
+// function absBoardSum(arr) {
+//   let sum = 0;
+//   for (let i = 0; i < arr.length; i++);
+//   sum += Math.abs(arr[i]);
 // }
-
-// function gameOver() {
-//   if (oWins === true) {
-//     startMsgEl.innerText = `O is the winner!`
-//   } else if (sum1 === 3, sum2 === 3, sum4 === 4, etc.) {
-//     startMsgEl.innerText = `X is the winner!`
-//   }
-// }
-
-
-// function hide() {
-//   document.getElementById('xBtn').hidden = true;
-//   document.getElementById('oBtn').hidden = true;
-// }
-
-// function show() {
-//   document.getElementById('xBtn').show = true;
-//   document.getElementById('oBtn').show = true;
-// }
-
-// function win() 
-// let win1 
-// wins = 3 sqs in a row abs(sum) = 3
-
-// function sumWinCndtns() {
-  
-// }
-
-// function gameOver() {
-//   if (abs(var) === 3) {
-    
-//   } else if (abs(all values on board) === 9) {
-
-//   } else {
-//     return
-//   }
