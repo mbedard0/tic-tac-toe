@@ -12,6 +12,7 @@ let playerTurn = 1
 let squares = document.querySelectorAll('.square');
 let boardElement = document.getElementById('board')
 let msgEl = document.querySelector('#msg')
+let startMsg = document.querySelector('#startMsg')
 
 // const xBtn = document.getElementById('xBtn')
 // const oBtn = document.getElementById('oBtn')
@@ -28,7 +29,6 @@ boardElement.addEventListener('click', handleClick)
 init()
 
 function init() {
-  msgEl.innerText = 'Start the game by picking a square.';
   playerTurn = 1;
   board = [
     null, null, null,
@@ -43,9 +43,10 @@ function init() {
 // while gameOver !== true, run handleClick()
 
 function handleClick(evt) {
+  startMsg.innerText = '';
   let idx = parseInt(evt.target.id);
   if (board[idx] === 1 || board[idx] === -1) {
-    msgEl.innerText = `That square's already been picked!`
+    startMsg.innerText = `That square's already been picked!`
   } else {
   board[parseInt(evt.target.id)] = playerTurn;
   playerTurn = playerTurn * -1;
