@@ -3,6 +3,7 @@
 // /*---------------------------- Variables (state) ----------------------------*/
 
 let playerTurn = 1
+let isGameOver = false
 
 // /*------------------------ Cached Element References ------------------------*/
 
@@ -34,6 +35,9 @@ function init() {
 
 function handleClick(evt) {
   startMsg.innerText = '';
+  if (isGameOver === true) {
+    return
+  }
   let idx = parseInt(evt.target.id);
   if (board[idx] === 1 || board[idx] === -1) {
     startMsg.innerText = `That square's already been picked!`
@@ -51,13 +55,13 @@ function render() {
     } else if (board[idx] === -1) {
       square.innerText = 'O';
     } else {
-      square.innerText = ''
+      square.innerText = '';
     }
   })
   if (playerTurn === 1) {
-    msgEl.innerText = `It's X's turn now.`
+    msgEl.innerText = `It's X's turn now.`;
   } else if (playerTurn === -1) {
-    msgEl.innerText = `It's O's turn`
+    msgEl.innerText = `It's O's turn`;
   }
   gameOver()
 }
@@ -72,7 +76,8 @@ function gameOver() {
     (board[0] + board[4] + board[8] === 3) ||
     (board[2] + board[4] + board[6] === 3)) {
     startMsg.innerText = 'X is the winner!';
-    msgEl.innerText = 'Would you like to play again?'
+    msgEl.innerText = 'Would you like to play again?';
+    isGameOver = true;
   } else if ((board[0] + board[1] + board[2] === -3) ||
     (board[3] + board[4] + board[5] === -3) ||
     (board[6] + board[7] + board[8] === -3) ||
@@ -82,11 +87,13 @@ function gameOver() {
     (board[0] + board[4] + board[8] === -3) ||
     (board[2] + board[4] + board[6] === -3)) {
     startMsg.innerText = 'O is the winner!';
-    msgEl.innerText = 'Would you like to play again?'
+    msgEl.innerText = 'Would you like to play again?';
+    isGameOver = true;
   } else if (board.includes(null)) {
     return
   } else {
     startMsg.innerText = `It's a tie!`;
-    msgEl.innerText = 'Would you like to play again?'
+    msgEl.innerText = 'Would you like to play again?';
+    isGameOver = true;
   }
 }
