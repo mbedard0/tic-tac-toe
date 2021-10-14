@@ -6,8 +6,6 @@ let playerTurn = 1
 
 // /*------------------------ Cached Element References ------------------------*/
 
-// let gameStatus
-
 
 let squares = document.querySelectorAll('.square');
 let boardElement = document.getElementById('board')
