@@ -30,6 +30,7 @@ function init() {
     null, null, null
   ];
   startMsg.innerText = `Start the game by picking a square.`
+  isGameOver = false;
   render()
 }
 
